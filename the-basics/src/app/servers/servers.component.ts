@@ -23,11 +23,11 @@ ngOnInit() {
 
 }
 onCreateServer(){
-  this.serverCreationStatus="server was created";
+  this.serverCreationStatus="server was created Name is" + this.serverName;
 }
 }
 
-onUpdateServerName(event: any){
-  console.log(event)
-  this.serverName=(<HTMLInputElement>event.target).value
-}
+// onUpdateServerName(event: any){
+//   console.log(event)
+//   this.serverName=(<HTMLInputElement>event.target).value
+// }
