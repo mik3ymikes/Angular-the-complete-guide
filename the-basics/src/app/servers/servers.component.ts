@@ -12,6 +12,7 @@ allowNewServer=false;
 serverCreationStatus="no server was created";
 serverName="tester"
 serverCreated=false
+servers=["Testserver", "Testserver2"]
 
 
 constructor(){
@@ -25,11 +26,14 @@ ngOnInit() {
 }
 onCreateServer(){
   this.serverCreated=true
+  this.servers.push(this.serverName)
   this.serverCreationStatus="server was created Name is" + this.serverName;
-}
+
 }
 
-// onUpdateServerName(event: any){
-//   console.log(event)
-//   this.serverName=(<HTMLInputElement>event.target).value
-// }
+
+onUpdateServerName(event: any){
+  console.log(event)
+  this.serverName=(<HTMLInputElement>event.target).value;
+}
+}

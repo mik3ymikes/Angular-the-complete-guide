@@ -8,7 +8,8 @@ class="form-control"
 [(ngModel)]="serverName">
 
 <!-- <p>{{ serverName }}</p> -->
-<button class="btn btn-primary"
+<button
+class="btn btn-primary"
 [disabled]="!allowNewServer"
 (click)="onCreateServer()">Add Server</button>
 <!-- <p> {{ serverCreationStatus }}</p> -->
@@ -18,6 +19,6 @@ class="form-control"
 <!-- <ng-template #noServer>
   <p>no server was created</p>
 </ng-template>> -->
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
+
 
