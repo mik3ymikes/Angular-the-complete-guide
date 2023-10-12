@@ -13,18 +13,21 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes=[
   {path: '', component: HomeComponent}
-  {path: 'users', component: UserComponent}
-  {path: 'users/:id/:name', component: UserComponent}
+  {path: 'users', component: UserComponent, children:{
+    {path: ':id/:name', component: UserComponent}
+
+  }}
   {path: 'servers', component: ServersComponent},
-  {path: 'servers'/:id', component: ServersComponent},
-
-  {path: 'servers/:id/edit', component: EditServersComponent}
-
-  {path: 'servers', component: ServersComponent}
-
+  {path: 'servers', component: ServersComponent: ServerComponent, children: [
+    {path: ':id/:edit', component: UserComponent}
+    {path: ':id', component: ServersComponent},
+  ]},
+{path: 'not-found', component: PageNotFoundComponent},
+{path: '**', redirectTo: '/not-found' }
 ]
 
 
@@ -37,7 +40,8 @@ const appRoutes: Routes=[
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
