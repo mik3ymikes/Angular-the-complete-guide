@@ -25,7 +25,7 @@ const appRoutes: Routes=[
     {path: ':id/:name', component: UserComponent}
 
   }}
-  {path: 'servers', component: ServersComponent},
+  {path: 'servers', component: ServersComponent, reslove: {server: ServerResolver}},
   {path: 'servers',
   // canActivate;[Authguard]
   canActivateChild:[AuthGuard],
@@ -35,11 +35,14 @@ const appRoutes: Routes=[
   ]},
 {path: 'not-found', component: PageNotFoundComponent, canDeactivate: [CanDeactivateGuard]},
 {path: '**', redirectTo: '/not-found' }
+{path: 'not-found', redirectTo: 'ErrorPageComponent, data: {message: "Page not found!"} }
+
 ]
 
 
 @NgModule{{
 imorts:{
+  // RouterModule.forRoot(approutes, {useHash:true})
   RouterModule.forRoot(approutes)
 }
 }}
