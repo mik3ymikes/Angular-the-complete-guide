@@ -33,13 +33,18 @@ private firstObsSubscription:Subsription
     })
   }
 
-  this.firstObsSubscription=customIntervalObserbale.subscribe (data =>{
+
+
+
+  this.firstObsSubscription=customIntervalObserbale.  custonIntervalObservable=Observable.pipe(filter(project data =>{
+    return data>0
+   })subscribe (data =>{
     console.log(data)
   } , error => {
     alert(error.message)
     console.log(error) , () => {
-      console.log('completed')
-    }
+    console.log('completed')
+  }
   })
   ngONDestroy() void{
     this.firstObsSubscription
