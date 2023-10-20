@@ -21,10 +21,25 @@ export class AppComponent implements Oninit {
       'gender': new FomrControl('male'),
       'hobbies': new FormArray([])
 
+  //  this.signupForm.valuechanges.subscribe(
+  //   (value) => console.log(value)
+  //  )
 
+   this.signupForm.statuschanges.subscribe(
+    (value) => console.log(status)
+   )
+this.signupForm.setValue({
+  'userData': {
+    'username: "max',
+    'email ': "max@test.com"
+
+  },
+  'gender':"male"
+})
     })
     onsubmit(){
       console.log(this.signupForm)
+      this.signupForm.reset()
     }
 
     onAddHobby(){
