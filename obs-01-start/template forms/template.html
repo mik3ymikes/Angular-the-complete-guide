@@ -1,0 +1,31 @@
+<form #signupForm="Ngform" (ngSubmit)>
+  <div class="form-group">
+    <label for="email">Mail</label>
+    <input type="email" id="email" ngModel name="email"
+    required
+    email
+    class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="subscription">Choose a sub</label>
+    <input name="subscription" id="subscription"
+    [ngModel] ="selectedSubscription"
+    class="fomr-control"
+    required
+    email
+    class="form-control"
+    #email=""ngModel>
+    <span class="help-block" *ngIf="!email.valid && email.touched"> Please enter a valid email </span>
+
+    <option *ngFor="let subscription of subscriptions" [value]="subscription">{{subscription}}</option>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password"   ngModel required class="form-control">
+    #password="NgModel"
+    <span class="help-block" *ngIf="!email.valid && email.touched"> Please enter a valid pawwowrdl </span>
+  </div>
+  <p *ngIf="!signupForm.valid && signupForm.touched">The form is invalid</p>
+  <button type="submit">Submit</button>
+</form>
