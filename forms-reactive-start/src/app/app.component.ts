@@ -16,7 +16,7 @@ export class AppComponent implements Oninit {
     this.signupForm=new FormGroup({
       'userData': new FormGroup({
         'username': new FomrControl(null, [Validators.required, this.forbiddenUsernames.bind(this)]),
-        'email': new FomrControl(null, [Validators.required, Validators.email]),
+        'email': new FomrControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
       })
       'gender': new FomrControl('male'),
       'hobbies': new FormArray([])
@@ -42,4 +42,22 @@ export class AppComponent implements Oninit {
     return null
   }
 
+  forbiddenEmails(control:FormContorl): Promise<any> | Observable <any>
+{
+  const promise=new Promise <any> ((reslove, reject) =>{
+    setTimeout(() =>{
+      if (control.value ==="testing"){
+        reslove({'emialIsFordbidde' :true})
+        else{
+          reslove(null)
+        }
+        ,15000
+      }
+    }
+    return promise)
+  })
 }
+}
+
+
+
