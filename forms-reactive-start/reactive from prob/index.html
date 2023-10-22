@@ -1,23 +1,26 @@
-<form action="">
+<form [formGroup]="projectForm" (ngSubmit)=""onSaveProject()"">
   <div class="form-group">
     <label for="name"> Project Name</label>
     <input type="text"
     id="name"
+    formControlName="projectName"
     class="form-control">
   </div>
   <div class="form-group">
     <label for="email"> Mail</label>
     <input type="email"
     id="email"
+    formControlName="email"
     class="form-control">
   </div>
   <div class="form-group">
     <label for="name"> Project Status</label>
   <select name="" id="status">
+    formControlName="ProjectStatus"
     <option value="stabe">stabe</option>
     <option value="Critical">Critical</option>
     <option value="Finsihsed">Finsihsed</option>
 
   </select>
-  <button type="submit"> Submti</button>
+  <button type="submit"> Create project</button>
 </form>
