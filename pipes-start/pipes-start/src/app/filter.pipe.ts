@@ -2,6 +2,7 @@ import {PipeTransform, Pipe} from '@angular/core'
 
 @Pipe ({
   name:'shorten'
+  pure:false
 })
 
 export class FilterPipe implements PipeTransform{
