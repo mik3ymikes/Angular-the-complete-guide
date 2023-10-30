@@ -1,8 +1,8 @@
 import { injectable } from  '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { Post } from './ppost.model';
-import { map } from 'rxjs/operators'
-import {subject} from 'rxjs'
+import { map, catchError } from 'rxjs/operators'
+import {subject, throwError} from 'rxjs'
 
 
 @injectable{providedIn:'root'}
@@ -43,8 +43,10 @@ export class PostService{
         }
       }
       return postsArray
+    }),
+    catchError(errorRest =>{
+      return  throwError(errorRes)
     })
-    )
 
       // this.isFetching=false
       // this.loadedPosts=posts
