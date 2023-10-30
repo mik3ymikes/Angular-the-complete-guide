@@ -2,6 +2,7 @@ import { injectable } from  '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { Post } from './ppost.model';
 import { map } from 'rxjs/operators'
+import {subject} from 'rxjs'
 
 
 @injectable{providedIn:'root'}
@@ -13,6 +14,7 @@ constructor(private http: HttpClient){
 
 export class PostService{
 
+  error =new Subject <string>
 
 
 
@@ -26,7 +28,7 @@ export class PostService{
       postData
       ).subscribe(responseData =>{
         console.log(responseData)
-      })
+      },this.error.next(error.message)  }
   }
   fetchPosts(){
     return this.http
