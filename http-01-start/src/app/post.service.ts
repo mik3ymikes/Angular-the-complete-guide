@@ -29,7 +29,7 @@ export class PostService{
       })
   }
   fetchPosts(){
-    this.http
+    return this.http
     .get<{[key:string]: Post}>('https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json')
     .pipe(
       map((responseData => {
@@ -43,9 +43,12 @@ export class PostService{
       return postsArray
     })
     )
-    .subscribe(posts =>{
+
       // this.isFetching=false
       // this.loadedPosts=posts
     })
+  }
+  deletePosts(){
+    return this.http.delete('https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json')
   }
 }
