@@ -38,10 +38,12 @@ export class PostService{
     searchParams=searchParams.append('print', 'pretty')
     searchParams=searchParams.append('custom', 'key')
     return this.http
-    .get<{[key:string]: Post}>('https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json',
+    .get<{[key:string]: Post}>(
+      'https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json',
   {
     headers: new HttpHeaders ({ "custom-header" : 'hello'}),
     params: searchParams
+    responseType: 'json'
   })
 
 
@@ -65,13 +67,15 @@ export class PostService{
     })
   }
   deletePosts(){
-    return this.http.delete('https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json')
+    return this.http
+    .delete('https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json',
     {
       observe:'events'
+      responseType: 'text'
     }
   }.pipe(tap(event => {
     if(event.type===HttpEventType.Sent){
-      
+
     }
      if (event.type ===HttpEventType.Response)
      {
