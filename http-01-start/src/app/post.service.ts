@@ -1,5 +1,5 @@
 import { injectable } from  '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Post } from './ppost.model';
 import { map, catchError } from 'rxjs/operators'
 import {subject, throwError} from 'rxjs'
@@ -31,10 +31,14 @@ export class PostService{
       },this.error.next(error.message)  }
   }
   fetchPosts(){
+    const searchParams=new HttpParams()
+    searchParams=searchParams.append('print', 'pretty')
+    searchParams=searchParams.append('custom', 'key')
     return this.http
     .get<{[key:string]: Post}>('https://ng-complete-guide-aa868-default-rtdb.firebaseio.com/posts.json',
   {
-    headers: new HttpHeaders ({ "custom-header" : 'hello'})
+    headers: new HttpHeaders ({ "custom-header" : 'hello'}),
+    params: searchParams
   })
 
 
