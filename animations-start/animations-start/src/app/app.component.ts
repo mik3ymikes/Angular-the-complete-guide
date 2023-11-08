@@ -102,12 +102,18 @@ import { Component, trigger, state, style } from '@angular/core';
 
 
       ]),
+
+
       transition('* =>void',
-      [animate(300), style({
-        transform"'translateX(100px),
-        opacity:0
+      group({
+        [animate(300), style({
+          transform"'translateX(100px),
+          opacity:0
+        })
       })
-      ]
+      ],
+      [animate(800), style({
+        color:'red'
       }),
 
   ]
