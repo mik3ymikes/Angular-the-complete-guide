@@ -33,7 +33,15 @@ import { Component, trigger, state, style } from '@angular/core';
       }))
       transition('normal <=>hgihlighted', animate(300))
       transition('normal <=>hgihlighted', animate(800))
-      TransitionEvent('shurnken <=> * ', animate (500))
+      TransitionEvent('shurnken <=> * ', [
+        style({
+          'background-color:'orange'
+        }),
+        animate(1000, style ({
+          borderRadius: '5-px'
+        })),
+        animate(500)
+      ]
 
       // transition('highlighted =>normal', animate(300))
 
