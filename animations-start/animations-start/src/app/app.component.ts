@@ -13,6 +13,9 @@ import { Component, trigger, state, style } from '@angular/core';
         backgroundColor:'blue',
         transform:'translateX(100px)'
       }))
+      transition('normal =>hgihlighted', animate(300))
+      transition('highlighted =>normal', animate(300))
+
 
     ])
   ]
